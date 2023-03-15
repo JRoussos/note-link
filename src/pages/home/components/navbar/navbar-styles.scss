@@ -1,0 +1,32 @@
+.profile {
+    z-index: 100;
+
+    .profile-wrapper {
+        display: flex;
+        align-items: center;
+
+        .profile-picture {
+            width: 45px;
+            height: 45px;
+
+            box-sizing: border-box;
+            background: gray;
+            
+            border-radius: 50%;
+            border: 2px solid #4e95d9;
+            
+            margin-right: 10px;
+
+            overflow: hidden;
+        }
+
+        .profile-info {
+
+            h4 {
+                margin: 2px 0;
+                text-transform: capitalize;
+            }
+        }
+    }
+
+}

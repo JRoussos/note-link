@@ -1,0 +1,39 @@
+.picker {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    
+    z-index: 100; 
+        
+    width: 60% ; //calc(100% - 40px);
+    margin: 150px 10px 0;
+    
+    box-shadow: 0 2px 5px 0 rgb(0, 0, 0, 0.1);
+    border-radius: 10px;
+
+    background: white;
+
+    .month-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+
+        padding: 10px;
+        
+        border-top: 1px solid rgb(0, 0, 0, 0.1);
+        
+        .month-cell {
+            font-size: 14px;
+            border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+
+            &:nth-last-child(-n + 4) {
+                border: none;
+            }
+        }
+
+        .selected{
+            color: #4e95d9;
+            font-weight: 600;
+        }
+    }
+}
+    

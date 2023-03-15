@@ -1,0 +1,56 @@
+.full-note {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    padding: 0 10px;
+    width: calc(100% - 20px);
+
+    .header {
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+
+        width: 100%;
+        min-height: 70px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        button {
+            background: none; 
+            border: none;
+            outline: none;
+    
+            margin: 10px 5px;
+
+            .heart-icon:is(.active){
+                color: #dd2e44;
+                // text-shadow: 0 0 1px #df4f61;
+                font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 200, 'opsz' 48;
+            }
+        }
+    }
+
+    .card:first-of-type {
+        margin-top: 0;
+    }
+
+    .header-title-paragraph {
+        // font-size: 14px !important;
+        display: inline-flex;
+        align-items: center;
+        // line-height: 25px !important;
+    }
+
+    .accordion-view {
+        overflow: hidden;
+        max-height: 300px;
+        transition: max-height 0.2s ease-in-out;
+    }
+     
+    .close {
+        max-height: 0;
+    }
+}

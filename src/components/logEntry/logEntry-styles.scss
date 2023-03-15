@@ -1,0 +1,73 @@
+.logs-container {
+    padding: 0 !important;
+    padding-top: 5px !important;
+
+    .modification-log-entry {
+        margin-left: 10px;
+        height: 72px;
+        
+        background-position: left top;
+        background-size: 1px 8px;
+        background-repeat: repeat-y;
+        background-image: linear-gradient(
+            to bottom, 
+            rgb(135, 135, 135) 0 10%, 
+            rgba(255, 255, 255, 0) 10%
+        );
+
+        padding: 0 15px;
+    
+        .log-content {
+            display: flex;
+            align-items: center;
+
+            .bullet-point {
+                display: inline-block;
+
+                position: absolute;
+                left: 8px;
+
+                height: 5px;
+                width: 5px;
+                margin-top: 8px;
+
+                background: #fff;
+
+                box-sizing: border-box;
+                border: 1px solid #7a7a7a;
+                border-radius: 50%;
+            }
+
+            .log-wrapper {
+                margin: 4px 0 0 0;
+                padding: 10px;
+                
+                border-radius: 10px;
+                width: 100%;
+
+                &:is(.active) {
+                    background: rgba(238, 247, 255, 0.7);
+                    border: 1px solid #cfddeb;
+                }
+            }
+
+            .log-text {
+                display: inline-flex;
+                align-items: center;
+
+                color: rgba(0, 0, 0, 0.8);
+                font-weight: 500;
+                font-size: 14px;
+                
+                margin: 0;
+            }
+
+            .log-subtext {
+                color: rgba(0, 0, 0, 0.6);
+                font-weight: 500;
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+    }
+}

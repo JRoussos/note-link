@@ -1,0 +1,74 @@
+.share {
+    position: absolute;
+    inset: 0;
+
+    width: calc(100% - 20px);
+    margin: 0 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .share-card {
+        position: relative;
+        
+        width: 100%;
+        border-radius: 10px;
+
+        margin: 20px 0;
+        padding: 20px;
+        overflow: hidden;
+
+        background: #fff;
+        box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
+        
+        .share-header span {
+            color: #2fbb67;
+            font-size: 50px;
+            line-height: 60px;
+
+            margin-top: 20px;
+        }
+
+        .share-text-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            h4 {
+                font-size: 16px;
+                font-weight: 600;
+
+                color: rgba(0, 0, 0, 0.8);
+
+                margin: 12px 0;
+            }
+
+            p {
+                color: rgba(0, 0, 0, 0.6);
+                font-weight: 600;
+                font-size: 12px;
+                margin: 0;
+            }
+        }
+        
+        .share-footer {
+            margin: 20px 0;
+
+            button {
+                padding: 8px 20px;
+                background: none;
+                
+                width: 40%;
+                
+                border-radius: 10px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+
+                font-weight: 600;
+                color: rgba(0, 0, 0, 0.8);
+            }
+
+        }
+
+    }
+}

@@ -1,0 +1,110 @@
+.create {
+    position: fixed;
+    inset: 0;
+
+    // background: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .header {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 70px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        // border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+        
+        button {
+            background: none;
+            border: none;
+            outline: none;
+
+            margin: 10px 15px;
+        }
+
+        .submit-btn p {
+            font-size: 14px;
+            font-weight: 500;
+            color: #0782f9;
+        }
+
+        .arrow {
+            position: relative;
+            display: inline-block;
+            width: 20px;
+            
+            border-top: 2px solid #626161;
+            overflow: visible;
+
+            margin: 1px 10px 0 1px; 
+            
+            will-change: transform;
+            transform: scale(0.9);
+            transition: transform 0.4s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+            &::before {
+                content: "";
+                display: inline-block;
+                box-sizing: border-box;
+
+                position: absolute;
+                left: 0;
+                top: -6px;
+
+                width: 10px;
+                height: 10px;
+                
+                border: 2px solid #626161;
+                border-left: none;
+                border-bottom: none;
+
+                transform: rotate(225deg);
+            }
+        }
+    }
+
+    .content {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: calc(100% - 70px);
+
+        p {
+            font-size: 12px;
+            font-weight: 500;
+            color: rgba(0, 0, 0, 0.6);
+            
+            margin-left: 20px;
+            text-transform: capitalize;
+            text-align: left;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 100%;
+            resize: none;
+
+            border: none;
+            background: none;
+            outline: none;
+            
+            padding: 20px;
+            margin: 0;
+
+            box-sizing: border-box;
+
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.notes {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+
+    // width: calc(100% - 20px);
+    // margin: 0 10px;
+
+    // transform: translate3d(0, -115px, 0);
+    
+    .overflow-container {
+        will-change: transform;
+    }
+
+    .subtitle {
+        padding-bottom: 20px; 
+
+        font-size: 13px; 
+        font-weight: 500; 
+        
+        opacity: 0.5;       
+    }
+}

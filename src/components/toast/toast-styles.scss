@@ -1,0 +1,113 @@
+$red-accent: #ff4b4b;
+$red-100: #df4243;
+$red-background: #f7e9e7;
+$red-20: rgba(223, 66, 67, 0.2);
+$red-40: rgba(223, 66, 67, 0.4);
+
+.hidden {
+    top: -200px !important;
+}
+
+.toast {
+    position: fixed;
+    z-index: 100000;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: fit-content;
+
+    margin: 20px 5px;
+    overflow: hidden;
+
+    border-radius: 10px;
+    border: 1px solid $red-40;
+    
+    background: $red-background;
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+
+    transition: top .4s ease-in-out;
+
+    .toast-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        max-height: 70px;
+        border-bottom: 1px solid $red-20;
+
+        position: relative;
+
+        .toast-header-item {
+            margin: 10px;
+            text-align: start;
+
+            h1, span {
+                font-size: 14px;
+                font-weight: 600;
+    
+                color: $red-100;
+    
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+    
+                text-transform: capitalize;
+    
+                margin: 0;
+            }
+
+            span {
+                font-size: 17px;
+            }
+        }
+    }
+
+    .toast-content {
+        padding: 10px;
+        text-align: left;
+
+        .line-wrap {
+            display: -webkit-box;
+    
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        p {
+            overflow: hidden;
+            word-wrap: break-word;
+
+            width: auto;
+    
+            color: $red-100;
+            
+            font-weight: 500;
+            font-size: 13px;
+        }
+    }
+
+    .toast-countdown {
+        width: 100%;
+        height: 3px;
+
+        position: relative;
+
+        .countdown-bar {
+            position: absolute;
+            inset: 0;
+
+            background: $red-accent;
+            transform-origin: left;
+
+            transform: scaleX(0);
+        }
+
+        .animate {
+            animation: countdown 5s linear forwards;
+        }
+    }
+
+}

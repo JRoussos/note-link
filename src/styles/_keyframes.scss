@@ -1,0 +1,29 @@
+@keyframes fadeIn {
+    0%   { opacity: 0 }
+    100% { opacity: 1 }
+}
+
+@keyframes colorFadeIn {
+    0%   { background: rgba(0, 0, 0, 0) }
+    100% { background: rgba(0, 0, 0, 0.45) }
+}
+
+@keyframes fadeOut {
+    0%   { opacity: 1 }
+    100% { opacity: 0 }
+}
+
+@keyframes lds-ring {
+    0%   { transform: rotate(0deg)   }
+    100% { transform: rotate(360deg) }
+}
+
+@keyframes countdown {
+    0% { transform: scaleX(1) }
+    100% { transform: scaleX(0) }
+}
+
+@keyframes skeleton-loading {
+    0% { background-color: #dde0e2 }
+    100% { background-color: #f1f2f3 }
+}
