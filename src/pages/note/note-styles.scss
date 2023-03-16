@@ -37,20 +37,14 @@
         margin-top: 0;
     }
 
-    .header-title-paragraph {
-        // font-size: 14px !important;
-        display: inline-flex;
-        align-items: center;
-        // line-height: 25px !important;
-    }
-
     .accordion-view {
         overflow: hidden;
-        max-height: 300px;
+        max-height: 288px;
         transition: max-height 0.2s ease-in-out;
     }
      
     .close {
-        max-height: 0;
+        max-height: 72px;
+        transition: max-height 0.2s ease-in-out;
     }
 }

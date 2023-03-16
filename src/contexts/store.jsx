@@ -3,7 +3,7 @@ import { initialState, reducer } from './state';
 
 import { auth, db } from '../firebase'
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, updateProfile, signOut } from 'firebase/auth'
-import { collection, addDoc, doc, deleteDoc, query, where, orderBy, updateDoc, getDoc, onSnapshot } from 'firebase/firestore'
+import { collection, addDoc, doc, deleteDoc, query, where, orderBy, updateDoc, getDoc, onSnapshot, arrayUnion } from 'firebase/firestore'
 
 import { useDeviceSelectors } from 'react-device-detect'
 import * as linkify from 'linkifyjs';
@@ -45,15 +45,15 @@ const StateProvider = ({ children }) => {
         return tagsDetected
     }
 
-    const pushNote = (noteID, noteContent, noteLength) => {
+    const pushNote = (noteID, noteContent, noteLength, old_noteContent) => {
         const dateCreated = new Date().toISOString()
-        const hashtagArray = checkTextForHashtags(noteContent)
 
+        const hashtagArray = checkTextForHashtags(noteContent)
         const userID = currentUser.uid
 
         if ( noteID ) {
             const _docRef = doc(db, 'notes', noteID)
-            return updateDoc(_docRef, { dateCreated, hashtagArray, noteContent, noteLength })
+            return updateDoc(_docRef, { dateEdited: dateCreated, hashtagArray, noteContent, noteLength, noteChanges: arrayUnion(old_noteContent) })
         } else {
             const _ref = collection(db, 'notes')
             return addDoc(_ref, { dateCreated, hashtagArray, noteContent, noteLength, userID })

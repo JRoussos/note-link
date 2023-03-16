@@ -4,16 +4,16 @@ import QRCode from 'react-qr-code';
 
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw';
 
 import { useStore } from '../../contexts/store'
-import { LoadingCard } from '../home/components/card/card';
+import { LoadingCardMultiple } from '../home/components/card/card';
 import Topper from '../../components/topper/topper';
 import VerticalDotMenu, { MenuWindow } from '../../components/dotMenu/dotMenu'
-
+import ChangeLog from '../../components/changeLog/changeLog';
 
 import '../home/components/card/card-styles.scss'
 import './note-styles.scss'
-import LogEntry from '../../components/logEntry/logEntry';
 
 const Note = () => {
     const { id } = useParams()
@@ -24,14 +24,17 @@ const Note = () => {
     const { fetchNote, logError } = useStore()
 
     const [note, updateNote] = useState(location.state || {})
-    const [isAccordionOpen, setAccordionState] = useState(false)
+    const [isAccordionOpen, updateAccordionState] = useState(false)
+
+    const [currentSelectedLog, updateCurrentSelectedLog] = useState({ index: 0, note: note })
 
     const [activeHeart, setHeart] = useState('')
 
     const getNote = async () => {
         try {
             const querySnapshot = await fetchNote(id)
-            updateNote(querySnapshot.data())
+            updateNote({...querySnapshot.data(), id})
+            updateCurrentSelectedLog({ index: 0, note: querySnapshot.data() })
         } catch (error) {
             logError(error)
         }
@@ -54,6 +57,10 @@ const Note = () => {
         getNote()
     }, [])
 
+    // useEffect(() => {
+    //     console.log(note.id)
+    // }, [note])
+
     return (
         <Topper>
             <div className='full-note'>
@@ -62,7 +69,7 @@ const Note = () => {
                         <span className="material-symbols-rounded">keyboard_backspace</span>
                     </button>
                     <div>
-                        <button onClick={() => setHeart(state => state ? '' : ' active')}>
+                        <button onClick={() => setHeart(state => state ? "" : " active")}>
                             <span className={"material-symbols-rounded heart-icon" + activeHeart}>favorite</span>
                         </button>
                         <VerticalDotMenu>
@@ -75,8 +82,8 @@ const Note = () => {
                         <div className='card'>
                             <header className='card-header' style={{ alignItems: 'flex-start'}}>
                                 <div className='header-item'>
-                                    <div style={{ margin: '4px' }}>
-                                        <p>{formatDate(note.dateCreated, 'long')}</p>
+                                    <div>
+                                        <p className='header-title-paragraph'><span className="material-symbols-rounded" style={{ paddingRight: '10px' }}>event_note</span>{formatDate(note.dateCreated, 'long')}</p>
                                     </div>
                                     <div onClick={handleEditContent}>
                                         <span className="material-symbols-rounded">edit_note</span>
@@ -90,23 +97,22 @@ const Note = () => {
                                 
                             </header>
                             <article className='note-content'>
-                                {/* <p>{note.noteContent}</p> */}
-                                <ReactMarkdown children={note.noteContent} remarkPlugins={[remarkGfm]} />
+                                <ReactMarkdown children={currentSelectedLog.note.noteContent} 
+                                    remarkPlugins={[remarkGfm]} 
+                                    rehypePlugins={[rehypeRaw]} 
+                                    components={{ br: 'b' }}
+                                />
                             </article>
                         </div>
                         <div className='card'>
-                            <header className='card-header' onClick={() => setAccordionState(state => !state)}>
+                            <header className='card-header' onClick={() => updateAccordionState(state => !state)}>
                                 <div className='header-item'>
                                     <p className='header-title-paragraph'><span className="material-symbols-rounded" style={{ paddingRight: '10px' }}>draft</span>Change Log</p>
                                     <span className="material-symbols-rounded">{isAccordionOpen ? 'arrow_drop_up' : 'arrow_drop_down'}</span>
                                 </div>
                             </header>
-                            <article className='note-content logs-container'>
-                                <LogEntry note={note} active/>
-                                <div className={isAccordionOpen ? 'accordion-view' : 'accordion-view close'}>
-                                    <LogEntry note={note}/>
-                                    <LogEntry note={note}/>
-                                </div>
+                            <article className="note-content logs-container">
+                                <ChangeLog note={note} currentSelectedLog={currentSelectedLog} updateCurrentSelectedLog={updateCurrentSelectedLog} isAccordionOpen={isAccordionOpen}/>
                             </article>
                         </div>
                         <div className='card'>
@@ -116,10 +122,10 @@ const Note = () => {
                                 </div>
                             </header>
                             <article className='note-content' style={{ textAlign: 'center' }} onClick={() => console.log('qr click')}>
-                                <QRCode value={note.noteContent || " "} size={300} level={'M'} style={{ margin: '14px 0' }}/>
+                                <QRCode value={note.noteContent || ""} size={300} level={'M'} style={{ margin: '14px 0' }}/>
                             </article>
                         </div>
-                    </React.Fragment> : new Array(2).fill('').map( (_, index) => <LoadingCard key={index} />)
+                    </React.Fragment> : <LoadingCardMultiple amount={2} />
                 }
             </div>
         </Topper>

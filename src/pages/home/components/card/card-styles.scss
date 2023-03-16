@@ -1,6 +1,6 @@
 .card {
     position: relative;
-    
+
     width: 100%;
     border-radius: 10px;
 
@@ -19,11 +19,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            
+
             margin: 10px;
             text-align: start;
 
             overflow: hidden;
+
+            .header-title-paragraph {
+                display: inline-flex;
+                align-items: center;
+                // font-size: 14px !important;
+                // line-height: 25px !important;
+            }
 
             p {
                 color: rgba(0, 0, 0, 0.6);
@@ -45,7 +52,7 @@
             white-space: nowrap;
 
             gap: 8px;
-            
+
             p {
                 font-size: 13px;
                 font-weight: 600;
@@ -56,7 +63,7 @@
                 background: #e8f0fe;
                 background: rgba(238, 247, 255, 0.7);
                 color: #4e95d9;
-                
+
                 text-transform: capitalize;
                 border: 1px solid #cfddeb;
             }
@@ -84,10 +91,33 @@
         hr {
             border-color: #eaecef;
             border-bottom: none;
+        }
 
-            // width: 30%;
-            // transform-origin: left;
-            // transform: scaleX(0.5);
+        span b {
+            display: block;
+            margin: 1em;
+
+            // &:first-of-type {
+            //     display: none;
+            // }
+
+            & + b {
+                display: none;
+            }
+        }
+
+        ul {
+            list-style-position: inside;
+            list-style-type: decimal;
+            padding-left: 0px;
+
+            li {
+                font-size: 14px;
+                font-weight: 500;
+                line-height: 1.5;
+                
+                padding: 5px 0 5px 10px;
+            }
         }
     }
 
@@ -125,7 +155,7 @@
 
     .header-item {
         margin: 5px 10px !important;
-        
+
         &:nth-child(1) {
             width: 130px;
         }
@@ -133,15 +163,15 @@
         .line {
             height: 20px;
             width: 200px;
-        
+
             border-radius: 5px;
         }
     }
-    
+
     .text {
         height: 100px;
         width: 100%;
-    
+
         border-radius: 10px;
     }
 }

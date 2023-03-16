@@ -39,6 +39,10 @@ export const LoadingCard = () => {
     )
 }
 
+export const LoadingCardMultiple = ({ amount }) => {
+    return new Array(amount).fill('').map( (_, index) => <LoadingCard key={index}/> )
+}
+
 const Card = ({ note }) => {
     const { dateCreated, hashtagArray, noteContent, noteLength, id } = note
 
@@ -49,10 +53,11 @@ const Card = ({ note }) => {
         <div className='card'>
             <header className='card-header'>
                 <div className='header-item'>
-                    <p style={{ margin: '4px' }}>
+                    <p className='header-title-paragraph' style={{ margin: '4px 0 0 0' }}>
+                        <span className="material-symbols-rounded" style={{ paddingRight: '10px' }}>event_note</span>
                         <TimeAgo datetime={dateCreated} locale={'en_short'} />
                         <span style={{ padding: '0 5px' }}>∙</span>
-                        {noteLength > 1 ? `${noteLength} characters` : `${noteLength} character`}
+                        {noteLength === 1 ? `${noteLength} characters` : `${noteLength} character`}
                     </p>
                     <VerticalDotMenu horizontal>
                         <MenuWindow note={note} />
@@ -60,8 +65,7 @@ const Card = ({ note }) => {
                 </div>
                 <div className='header-item'>
                     <div className='hashtags'>
-                        {hashtagArray.slice(0, 3).map(tag => <p key={tag}>#{tag}</p>)}
-                        {hashtagArray.slice(3).length > 0 && <p>+{hashtagArray.slice(3).length}</p>}
+                        {hashtagArray.map(tag => <p key={tag}>#{tag}</p>)}
                     </div>
                 </div>
             </header>

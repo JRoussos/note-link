@@ -22,30 +22,30 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </React.StrictMode>,
 )
 
-// if ("serviceWorker" in navigator) {
-//     registerSW({
-//         onRegistered(registration) {
-//             registration && setInterval(() => registration.update(), 3600000) //60 * 60 * 1000
-//         }
-//     })
-// }
 if ("serviceWorker" in navigator) {
     registerSW({
-        onRegisteredSW(swUrl, registration) {
-            registration && setInterval(async () => {
-                if (!(!registration.installing && navigator)) return
-                if (('connection' in navigator) && !navigator.onLine) return
-
-                const resp = await fetch(swUrl, {
-                    cache: 'no-store',
-                    headers: {
-                        'cache': 'no-store',
-                        'cache-control': 'no-cache',
-                    }
-                })
-
-                if (resp?.status === 200) await registration.update()
-            }, 3600000)
+        onRegistered(registration) {
+            registration && setInterval(() => registration.update(), 3600000) //60 * 60 * 1000
         }
     })
 }
+// if ("serviceWorker" in navigator) {
+//     registerSW({
+//         onRegisteredSW(swUrl, registration) {
+//             registration && setInterval(async () => {
+//                 if (!(!registration.installing && navigator)) return
+//                 if (('connection' in navigator) && !navigator.onLine) return
+
+//                 const resp = await fetch(swUrl, {
+//                     cache: 'no-store',
+//                     headers: {
+//                         'cache': 'no-store',
+//                         'cache-control': 'no-cache',
+//                     }
+//                 })
+
+//                 if (resp?.status === 200) await registration.update()
+//             }, 3600000)
+//         }
+//     })
+// }

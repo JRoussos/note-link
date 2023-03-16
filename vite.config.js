@@ -13,20 +13,6 @@ export default defineConfig({
             workbox: {
                 globPatterns: ["**/*"],
                 maximumFileSizeToCacheInBytes: 5000000,
-                // runtimeCaching: [{
-                //     handler: 'NetworkOnly',
-                //     urlPattern: /\/share\/.*\/*.json/,
-                //     method: 'POST',
-                //     options: {
-                //         backgroundSync: {
-                //             name: 'myQueueName',
-                //             options: {
-                //                 maxRetentionTime: 24 * 60
-                //             }
-                //         }
-                //     }
-                // }]
-                // importScripts: ['./share-sw.js']
             },
             includeAssets: ["**/*"],
             manifest: {
@@ -60,12 +46,6 @@ export default defineConfig({
                         "title": "title",
                         "text": "text",
                         "url": "url",
-                        // "files": [
-                        //     {
-                        //         "name": "images",
-                        //         "accept": ["image/jpeg", "image/png"]
-                        //     }
-                        // ]
                     }
                 },
                 "shortcuts": [
@@ -85,7 +65,6 @@ export default defineConfig({
             },
             devOptions: {
                 enabled: true,
-                type: 'module'
             },
             //     manifest,
             //     devOptions: {

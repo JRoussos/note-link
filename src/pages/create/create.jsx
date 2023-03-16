@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
-import { useStore } from '../../contexts/store'
+import ShortUniqueId from 'short-unique-id'
 
+import { useStore } from '../../contexts/store'
 import './create-styles.scss'
 
 const Create = () => {
     const location = useLocation()
-    const { id } = useParams()
+    const navigate = useNavigate()
 
+    const { id } = useParams()
+    
     const [noteContent, setNoteContent] = useState(location.state?.noteContent || '')
     const [noteLength, setNoteLength] = useState(location.state?.noteLength || 0)
-
+    
     const { pushNote, logError, dispatch } = useStore()
-
-    const navigate = useNavigate()
+    const uid = new ShortUniqueId({ length: 20 })
 
     const handleBackBtn = () => {
         const updatedNote = { ...location.state, noteContent, noteLength }
@@ -46,7 +48,8 @@ const Create = () => {
 
     const handleSubmitFinishedNote = () => {
         try {
-            pushNote(id, noteContent, noteLength).then(docRef => {
+            const old_noteContent = { ...location.state, id: uid(), noteChanges: null }
+            pushNote(id, noteContent, noteLength, old_noteContent).then(docRef => {
                 console.log('Pushed Data Successfully: ', docRef?.id || id)
             })
 

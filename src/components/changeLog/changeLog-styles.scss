@@ -3,7 +3,7 @@
     padding-top: 5px !important;
 
     .modification-log-entry {
-        margin-left: 10px;
+        margin-left: 20px;
         height: 72px;
         
         background-position: left top;
@@ -25,11 +25,11 @@
                 display: inline-block;
 
                 position: absolute;
-                left: 8px;
+                left: 18px;
 
                 height: 5px;
                 width: 5px;
-                margin-top: 8px;
+                // margin-top: 8px;
 
                 background: #fff;
 
@@ -38,35 +38,63 @@
                 border-radius: 50%;
             }
 
-            .log-wrapper {
+            .log-wrapper {   
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                box-sizing: border-box;
+
                 margin: 4px 0 0 0;
                 padding: 10px;
                 
                 border-radius: 10px;
                 width: 100%;
 
+                background: none;
+                border: none;
+                text-align: left;
+                outline-color: transparent;
+
                 &:is(.active) {
                     background: rgba(238, 247, 255, 0.7);
+                    margin: 3px 0 0 0;
                     border: 1px solid #cfddeb;
                 }
             }
 
             .log-text {
-                display: inline-flex;
-                align-items: center;
+                // display: inline-flex;
+                // align-items: center;
 
                 color: rgba(0, 0, 0, 0.8);
                 font-weight: 500;
                 font-size: 14px;
                 
                 margin: 0;
+
+                white-space: nowrap;
             }
 
             .log-subtext {
                 color: rgba(0, 0, 0, 0.6);
                 font-weight: 500;
                 font-size: 12px;
+
                 margin: 0;
+
+                white-space: nowrap;
+            }
+
+            .swap-btn {
+                background: none;
+                border: none;
+
+                display: none;
+
+                &:is(.visible) {
+                    display: block;
+                }
             }
         }
     }

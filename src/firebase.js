@@ -20,7 +20,7 @@ export const auth = getAuth(app)
 export const db = getFirestore(app)
 export const messaging = getMessaging(app)
 
-enableIndexedDbPersistence(db).catch(error => {
+enableIndexedDbPersistence(db, { forceOwnership: true }).catch(error => {
     if (error.code == 'failed-precondition')
         console.warn('Multiple tabs open, persistence can only be enabled in one tab at a a time.')
     else if (error.code == 'unimplemented')

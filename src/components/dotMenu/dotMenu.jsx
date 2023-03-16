@@ -10,6 +10,7 @@ export const MenuWindow = ({ note, onDelete, setOpenState }) => {
     const { deleteNote, logError } = useStore()
     const navigate = useNavigate()
 
+    // console.log(note.id);
     const handleDelete = async () => {
         try {
             await deleteNote(note.id)
