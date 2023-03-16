@@ -6,11 +6,35 @@ import { useStore } from '../../contexts/store'
 
 import './menu-styles.scss'
 
+export const UserMenu = () => {
+    const { currentUser, logError, logOut } = useStore()
+
+    const handleLogout = async () => {
+        try {
+            await logOut()
+            navigate("/")
+        } catch (error) {
+            console.warn(error.code, error.message)
+            logError(error)
+        }
+    }
+
+    return (
+        <div className='menu-container'>
+            <button onClick={handleLogout}>
+                <div className='menu-option danger current-user'>
+                    {/* <p>Signed in as <span style={{ fontWeight: '600', textTransform: 'capitalize' }}>{currentUser.displayName}</span></p> */}
+                    <h4>Log out</h4>
+                </div>
+            </button>
+        </div>   
+    )
+}
+
 export const MenuWindow = ({ note, onDelete, setOpenState }) => {
     const { deleteNote, logError } = useStore()
     const navigate = useNavigate()
 
-    // console.log(note.id);
     const handleDelete = async () => {
         try {
             await deleteNote(note.id)
@@ -34,15 +58,22 @@ export const MenuWindow = ({ note, onDelete, setOpenState }) => {
         <div className='menu-window' onClick={() => setOpenState(state => !state)}>
             <div className='menu-container'>
                 <button onClick={handleShare}>
-                    <h4>Share</h4>
+                    <div className='menu-option'>
+                        <h4>Share</h4>
+                    </div>
                 </button>
                 <button onClick={handleEditContent}>
-                    <h4>Edit</h4>
+                    <div className='menu-option'>
+                        <h4>Edit</h4>
+                    </div>
                 </button>
                 <button onClick={handleDelete}>
-                    <h4 className="danger">Delete</h4>
+                    <div className='menu-option danger'>
+                        <h4>Delete</h4>
+                    </div>
                 </button>
             </div>
+            <UserMenu/>
         </div>, document.getElementById('root')
     )
 }

@@ -39,18 +39,21 @@
     align-items: center;
     justify-content: center;
 
+    flex-direction: column;
+    gap: 5px;
+
     background: rgba(0, 0, 0, 0.45);
     
     animation: colorFadeIn 0.1s ease-in forwards;
 
     .menu-container {
-        width: 80%;
+        width: 70%;
         
         display: flex;
         flex-direction: column;
         
         border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 5px;
+        border-radius: 8px;
     
         background: #fff;
         box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.1);
@@ -60,28 +63,69 @@
     
         button {
             margin: 0 !important;
-            padding: 8px 0;
+            padding: 4px;
             // max-height: 20px;
     
             background: none;
             border: none;
             border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
-            
-            &:last-of-type{
-                border: none !important;
-            }
-        
-            h4 {
-                font-weight: 600;
-                margin: 10px 0;
-                color: rgba(0, 0, 0, 0.9);
 
-                &:is(.danger) {
-                    color: #e44242;
-                    font-weight: 700 !important;
+            .menu-option {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+
+                flex-direction: column;
+
+                padding: 2px 0;
+                width: 100%;
+
+                border-radius: 6px;                
+    
+                span {
+                    // margin: 0 10px;
+                    // display: none;
+                }
+                
+                &:last-of-type{
+                    border: none !important;
+                }
+            
+                h4 {
+                    text-transform: capitalize;
+
+                    font-size: 14px;
+                    font-weight: 600;
+    
+                    margin: 10px 0;
+                    color: rgba(0, 0, 0, 0.7);
+    
+                    padding: 0 10px;
+                }
+
+            }
+            // .current-user {
+            //     margin: 5px 0;
+            //     p {
+            //         font-size: 14px;
+            //         font-weight: 500;
+
+            //         margin: 2px 0 !important;
+            //         color: rgba(0, 0, 0, 0.7) !important;
+            //     }
+            //     h4 {
+            //         margin: 2px 0 !important;
+            //     }
+            // }
+
+            .danger {
+                color: #d85555 !important;
+                // background: #ffeeee;
+
+                h4 {
+                    color: #d85555 !important;
                 }
             }
-
         }
     }
 }
