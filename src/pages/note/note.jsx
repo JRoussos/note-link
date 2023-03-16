@@ -56,11 +56,7 @@ const Note = () => {
     useEffect(() => {
         getNote()
     }, [])
-
-    // useEffect(() => {
-    //     console.log(note.id)
-    // }, [note])
-
+    
     return (
         <Topper>
             <div className='full-note'>
@@ -108,7 +104,7 @@ const Note = () => {
                             <header className='card-header' onClick={() => updateAccordionState(state => !state)}>
                                 <div className='header-item'>
                                     <p className='header-title-paragraph'><span className="material-symbols-rounded" style={{ paddingRight: '10px' }}>draft</span>Change Log</p>
-                                    <span className="material-symbols-rounded">{isAccordionOpen ? 'arrow_drop_up' : 'arrow_drop_down'}</span>
+                                    {note.noteChanges?.length >= 0 && <span className="material-symbols-rounded">{isAccordionOpen ? 'arrow_drop_up' : 'arrow_drop_down'}</span>}
                                 </div>
                             </header>
                             <article className="note-content logs-container">
