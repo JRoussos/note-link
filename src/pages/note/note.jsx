@@ -79,7 +79,7 @@ const Note = () => {
                             <header className='card-header' style={{ alignItems: 'flex-start'}}>
                                 <div className='header-item'>
                                     <div>
-                                        <p className='header-title-paragraph'><span className="material-symbols-rounded" style={{ paddingRight: '10px' }}>event_note</span>{formatDate(note.dateCreated, 'long')}</p>
+                                        <p className='header-title-paragraph'><span className="material-symbols-rounded" style={{ paddingRight: '10px', fontSize: '20px' }}>event_note</span>{formatDate(note.dateCreated, 'long')}</p>
                                     </div>
                                     <div onClick={handleEditContent}>
                                         <span className="material-symbols-rounded">edit_note</span>
@@ -103,7 +103,7 @@ const Note = () => {
                         <div className='card'>
                             <header className='card-header' onClick={() => updateAccordionState(state => !state)}>
                                 <div className='header-item'>
-                                    <p className='header-title-paragraph'><span className="material-symbols-rounded" style={{ paddingRight: '10px' }}>draft</span>Change Log</p>
+                                    <p className='header-title-paragraph'><span className="material-symbols-rounded" style={{ paddingRight: '10px', fontSize: '20px' }}>draft</span>Change Log</p>
                                     {note.noteChanges?.length >= 0 && <span className="material-symbols-rounded">{isAccordionOpen ? 'arrow_drop_up' : 'arrow_drop_down'}</span>}
                                 </div>
                             </header>
@@ -114,7 +114,7 @@ const Note = () => {
                         <div className='card'>
                             <header className='card-header'>
                                 <div className='header-item'>
-                                    <p className='header-title-paragraph'><span className="material-symbols-rounded" style={{ paddingRight: '10px' }}>qr_code</span>Note in QR Form</p>
+                                    <p className='header-title-paragraph'><span className="material-symbols-rounded" style={{ paddingRight: '10px', fontSize: '20px' }}>qr_code</span>Note in QR Form</p>
                                 </div>
                             </header>
                             <article className='note-content' style={{ textAlign: 'center' }} onClick={() => console.log('qr click')}>

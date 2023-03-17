@@ -1,8 +1,9 @@
 $red-accent: #ff4b4b;
 $red-100: #df4243;
-$red-background: #f7e9e7;
+$red-background: #fffdfd; //#f7e9e7;
 $red-20: rgba(223, 66, 67, 0.2);
 $red-40: rgba(223, 66, 67, 0.4);
+$red-70: rgba(223, 66, 67, 0.7);
 
 .hidden {
     top: -200px !important;
@@ -21,7 +22,7 @@ $red-40: rgba(223, 66, 67, 0.4);
     overflow: hidden;
 
     border-radius: 10px;
-    border: 1px solid $red-40;
+    border: 2px solid $red-40;
     
     background: $red-background;
     box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
@@ -99,7 +100,7 @@ $red-40: rgba(223, 66, 67, 0.4);
             position: absolute;
             inset: 0;
 
-            background: $red-accent;
+            background: $red-70;
             transform-origin: left;
 
             transform: scaleX(0);

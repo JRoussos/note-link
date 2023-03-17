@@ -84,8 +84,6 @@ const Register = () => {
 
     return (
         <div className='register'>
-            {Object.entries(errorLog).length > 0 && 
-                <Toast setErrorLog={setErrorLog} title={errorLog.code} message={errorLog.message}/> }
             <div className='welcome-message'>
                 <h1>Get Started</h1>
                 <p>Create an account and start sharing your notes with all your devices.</p>

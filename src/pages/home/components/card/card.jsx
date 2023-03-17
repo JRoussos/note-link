@@ -54,7 +54,7 @@ const Card = ({ note }) => {
             <header className='card-header'>
                 <div className='header-item'>
                     <p className='header-title-paragraph' style={{ margin: '4px 0 0 0' }}>
-                        <span className="material-symbols-rounded" style={{ paddingRight: '10px' }}>event_note</span>
+                        <span className="material-symbols-rounded" style={{ paddingRight: '10px', fontSize: '20px' }}>event_note</span>
                         <TimeAgo datetime={dateCreated} locale={'en_short'} />
                         <span style={{ padding: '0 5px' }}>∙</span>
                         {noteLength === 1 ? `${noteLength} characters` : `${noteLength} character`}

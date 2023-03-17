@@ -81,11 +81,6 @@
                 width: 100%;
 
                 border-radius: 6px;                
-    
-                span {
-                    // margin: 0 10px;
-                    // display: none;
-                }
                 
                 &:last-of-type{
                     border: none !important;
@@ -104,19 +99,6 @@
                 }
 
             }
-            // .current-user {
-            //     margin: 5px 0;
-            //     p {
-            //         font-size: 14px;
-            //         font-weight: 500;
-
-            //         margin: 2px 0 !important;
-            //         color: rgba(0, 0, 0, 0.7) !important;
-            //     }
-            //     h4 {
-            //         margin: 2px 0 !important;
-            //     }
-            // }
 
             .danger {
                 color: #d85555 !important;

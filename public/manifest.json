@@ -1,7 +1,7 @@
 {
-  "short_name": "Noted",
-  "name": "Noted",
-  "description": "Your notes everywhere",
+  "short_name": "NoteLink",
+  "name": "NoteLink",
+  "description": "Your notes, everywhere",
   "icons": [
     {
       "src": "/icons/favicon.ico",
