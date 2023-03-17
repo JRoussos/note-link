@@ -3,9 +3,19 @@
     100% { opacity: 1 }
 }
 
-@keyframes colorFadeIn {
-    0%   { background: rgba(0, 0, 0, 0) }
+@keyframes fadeInColor {
+    0% { background: rgba(0, 0, 0, 0) }
     100% { background: rgba(0, 0, 0, 0.45) }
+}
+
+@keyframes slideUp {
+    0%   { transform: translate3d(0, 100%, 0) }
+    100% { transform: translate3d(0, 0, 0) }
+}
+
+@keyframes slideDown {
+    0%   { transform: translate3d(0, 0, 0) }
+    100% { transform: translate3d(0, 100%, 0) }
 }
 
 @keyframes fadeOut {

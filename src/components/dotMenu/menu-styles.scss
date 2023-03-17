@@ -31,82 +31,85 @@
 .menu-window {
     position: fixed;
     inset: 0;
-    height: 100vh;
 
     z-index: 100;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
 
     flex-direction: column;
     gap: 5px;
 
     background: rgba(0, 0, 0, 0.45);
-    
-    animation: colorFadeIn 0.1s ease-in forwards;
+    animation: fadeInColor 0.1s ease-out forwards;
 
-    .menu-container {
-        width: 70%;
+    touch-action: none;
+    -webkit-overflow-scrolling: none;
+
+    .open {
+        animation: slideUp 0.2s cubic-bezier(1, 0, 0, 1) forwards;
+    }
+
+    .close {
+        animation: slideDown 0.2s cubic-bezier(1, 0, 0, 1) forwards;
+    }
+
+    .drag-container {
+        width: calc(100% - 12px);
+    
+        .menu-container {
+            display: flex;
+            flex-direction: column;
+            
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
         
-        display: flex;
-        flex-direction: column;
+            background: #fff;
+            box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.1);
         
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 8px;
-    
-        background: #fff;
-        box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.1);
-    
-        overflow: hidden;
-        animation: fadeIn 0.15s ease-out forwards;
-    
-        button {
-            margin: 0 !important;
-            padding: 4px;
-            // max-height: 20px;
-    
-            background: none;
-            border: none;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+            overflow: hidden;
+            margin-bottom: 10px;
+        
+            button {
+                margin: 0 !important;
+                padding: 4px;
+        
+                background: none;
+                border: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
 
-            .menu-option {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-
-                flex-direction: column;
-
-                padding: 2px 0;
-                width: 100%;
-
-                border-radius: 6px;                
-                
                 &:last-of-type{
                     border: none !important;
                 }
-            
-                h4 {
-                    text-transform: capitalize;
-
-                    font-size: 14px;
-                    font-weight: 600;
     
-                    margin: 10px 0;
-                    color: rgba(0, 0, 0, 0.7);
+                .menu-option {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
     
-                    padding: 0 10px;
+                    flex-direction: column;
+    
+                    padding: 2px 0;
+                    width: 100%;
+    
+                    border-radius: 6px;                
+                
+                    h4 {
+                        text-transform: capitalize;
+    
+                        font-size: 14px;
+                        font-weight: 600;
+        
+                        margin: 10px 0;
+                        padding: 0 10px;
+                    }
                 }
-
-            }
-
-            .danger {
-                color: #d85555 !important;
-                // background: #ffeeee;
-
-                h4 {
-                    color: #d85555 !important;
+    
+                .danger h4 {
+                    color: #e31e1e !important;
                 }
+                
             }
         }
     }

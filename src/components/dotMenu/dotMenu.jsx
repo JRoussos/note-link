@@ -7,7 +7,7 @@ import { useStore } from '../../contexts/store'
 import './menu-styles.scss'
 
 export const UserMenu = () => {
-    const { currentUser, logError, logOut } = useStore()
+    const { logError, logOut } = useStore()
 
     const handleLogout = async () => {
         try {
@@ -23,7 +23,6 @@ export const UserMenu = () => {
         <div className='menu-container'>
             <button onClick={handleLogout}>
                 <div className='menu-option danger current-user'>
-                    {/* <p>Signed in as <span style={{ fontWeight: '600', textTransform: 'capitalize' }}>{currentUser.displayName}</span></p> */}
                     <h4>Log out</h4>
                 </div>
             </button>
@@ -46,34 +45,28 @@ export const MenuWindow = ({ note, onDelete, setOpenState }) => {
         }
     }
 
-    const handleEditContent = () => {
-        navigate(`/create/${note.id}`, { state: note })
-    }
-
-    const handleShare = async () => {
-        await navigator.share({ text: note.noteContent })
-    }
-
     return createPortal (
-        <div className='menu-window' onClick={() => setOpenState(state => !state)}>
-            <div className='menu-container'>
-                <button onClick={handleShare}>
-                    <div className='menu-option'>
-                        <h4>Share</h4>
-                    </div>
-                </button>
-                <button onClick={handleEditContent}>
-                    <div className='menu-option'>
-                        <h4>Edit</h4>
-                    </div>
-                </button>
-                <button onClick={handleDelete}>
-                    <div className='menu-option danger'>
-                        <h4>Delete</h4>
-                    </div>
-                </button>
+        <div className='menu-window open' onClick={() => setOpenState(state => !state)}>
+            <div className='drag-container'>
+                <div className='menu-container'>
+                    <button onClick={async () => await navigator.share({ text: note.noteContent })}>
+                        <div className='menu-option'>
+                            <h4>Share</h4>
+                        </div>
+                    </button>
+                    <button onClick={() => navigate(`/create/${note.id}`, { state: note })}>
+                        <div className='menu-option'>
+                            <h4>Edit</h4>
+                        </div>
+                    </button>
+                    <button onClick={handleDelete}>
+                        <div className='menu-option danger'>
+                            <h4>Delete</h4>
+                        </div>
+                    </button>
+                </div>
+                <UserMenu/>
             </div>
-            <UserMenu/>
         </div>, document.getElementById('root')
     )
 }
@@ -81,18 +74,9 @@ export const MenuWindow = ({ note, onDelete, setOpenState }) => {
 const VerticalDotMenu = ({ children, horizontal=false }) => {
     const [isOpen, setOpenState] = useState(false)
 
-    const handleClick = () => {
-        setOpenState(state => !state)
-    }
-
-    // const handleBlur = event => {
-    //     if( event.currentTarget.matches(':focus-within') ) return
-    //     setOpenState(false)
-    // }
-
     return (
         <div style={{ display: 'inline-block' }}>
-            <button className='kebab-menu' onClick={handleClick}>
+            <button className='kebab-menu' onClick={() => setOpenState(state => !state)}>
                 <span className="material-symbols-rounded">{horizontal ? 'more_horiz' : 'more_vert'}</span>
             </button>
             {isOpen && React.cloneElement(children, { setOpenState })}
