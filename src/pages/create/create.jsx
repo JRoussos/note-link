@@ -41,8 +41,11 @@ const Create = () => {
                 parsedUrl.searchParams.get('url')
             ]
 
-            setNoteContent( searchParams.filter(Boolean).join('\n\n') )
-            setNoteLength( noteContent.trim().split('').length )
+            const newContent = searchParams.filter(Boolean).join('\n\n')
+            const newLength = newContent.trim().split('').length
+
+            setNoteContent(newContent)
+            setNoteLength(newLength)
         }
     }
 
