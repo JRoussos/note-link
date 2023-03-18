@@ -72,7 +72,7 @@ const Login = () => {
     }
 
     useEffect(() => {
-        if (currentUser) navigate('/home')
+        if (currentUser) navigate('/home', { replace: true })
     }, [currentUser])
 
     return (
@@ -86,7 +86,7 @@ const Login = () => {
             </div>
             <form onSubmit={handleFormSubmit}>
                 <div className='input-container'>
-                    <p className='input-title'>Your email</p>
+                    <p className='input-title'>Your Email</p>
                     <div className='input-wrapper'>
                         <input type='email' placeholder='Type your email' value={email} onChange={event => setEmail(event.target.value)}></input>
                     </div>

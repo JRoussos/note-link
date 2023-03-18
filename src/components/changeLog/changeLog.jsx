@@ -3,9 +3,11 @@ import * as Diff from 'diff'
 
 import './changeLog-styles.scss'
 import ShortUniqueId from 'short-unique-id'
+import { useStore } from '../../contexts/store'
 
 const LogEntry = ({ note, disabled, index, currentSelectedLog, updateCurrentSelectedLog, log, active=Boolean(currentSelectedLog.index === index) }) => {
     const span = useRef(null)
+    const { logError } = useStore()
 
     const handleLogClick = () => {
         if (disabled) return
@@ -31,6 +33,8 @@ const LogEntry = ({ note, disabled, index, currentSelectedLog, updateCurrentSele
 
     const handleSwapLog = event => {
         event.stopPropagation()
+
+        logError(new Error('That feature is not enable yet'))
 
         console.log('swap');
     }

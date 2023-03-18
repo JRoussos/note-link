@@ -41,22 +41,19 @@
     flex-direction: column;
     gap: 5px;
 
-    background: rgba(0, 0, 0, 0.45);
-    animation: fadeInColor 0.1s ease-out forwards;
+    // background: rgba(0, 0, 0, 0.45);
+    animation: fadeInColor 0.2s ease-out forwards;
 
     touch-action: none;
     -webkit-overflow-scrolling: none;
 
     .open {
-        animation: slideUp 0.2s cubic-bezier(1, 0, 0, 1) forwards;
-    }
-
-    .close {
-        animation: slideDown 0.2s cubic-bezier(1, 0, 0, 1) forwards;
+        animation: slideUp 0.2s cubic-bezier(1, 0, 0, 1);
     }
 
     .drag-container {
-        width: calc(100% - 12px);
+        width: calc(100% - 20px);
+        will-change: transform;
     
         .menu-container {
             display: flex;

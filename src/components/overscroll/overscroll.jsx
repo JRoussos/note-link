@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { useStore } from '../../contexts/store'
 
-const Overscroll = ({ className="", children, fallback }) => {
+const Overscroll = ({ className="", children, fallback=null }) => {
     const overscrollRef = useRef(null)
     const config = { startPoint: 0, pullChange: 0, isDragging: false, limit: 230 }
 

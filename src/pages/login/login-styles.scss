@@ -57,7 +57,7 @@
                 text-align: left;
                 margin: 0;
     
-                font-size: 13px;
+                font-size: 12px;
                 font-weight: 600;
                 padding: 0 4px;
 
@@ -82,7 +82,7 @@
                 transition: border 0.2s ease-in-out;
 
                 &:has(input:focus) {
-                    border-color: #cfddeb;
+                    border-color: #afc7e0;
                 }
     
                 input {

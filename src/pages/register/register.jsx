@@ -78,7 +78,7 @@ const Register = () => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged( auth, user => {
             setStatus(true)
-            if ( user ) navigate('/home')
+            if ( user ) navigate('/home', { replace: true })
         })
 
         return unsubscribe 
@@ -89,7 +89,7 @@ const Register = () => {
             <div className='welcome-message'>
                 <WelcomeBackground/>
                 <button onClick={handleBackBtn}>
-                    <span className="material-symbols-rounded">keyboard_backspace</span>
+                    <span className="material-symbols-rounded" style={{ fontWeight: 700 }}>keyboard_backspace</span>
                 </button>
                 <h1>Sign Up</h1>
                 {/* <p>Create an account and start sharing your notes with all your devices.</p> */}
@@ -125,7 +125,7 @@ const Register = () => {
                         <p>I've read and agree with the <Link to={'#'}>Terms of Service</Link> and the <Link to={'#'}>Privacy Policy</Link></p>                    
                     </div>
                 </div>
-                <button className='btn' style={{ background: '#0782f9', marginTop: '40px'}}>
+                <button className='btn' style={{ background: '#4494e3', marginTop: '40px'}}>
                     { isLogging ? 
                         <span style={{ color: '#f6f6f6' }}>Create Account</span> :
                         <div className="loading-ring">

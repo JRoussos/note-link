@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom'
 import { useNavigate } from 'react-router-dom'
 
 import { useStore } from '../../contexts/store'
+import SlideDown from './components/slideDown'
 
 import './menu-styles.scss'
 
@@ -47,28 +48,26 @@ export const MenuWindow = ({ note, onDelete, setOpenState }) => {
     }
 
     return createPortal (
-        <div className='menu-window open' onClick={() => setOpenState(state => !state)}>
-            <div className='drag-container'>
-                {note && <div className='menu-container'>
-                    <button onClick={async () => await navigator.share({ text: note.noteContent })}>
-                        <div className='menu-option'>
-                            <h4>Share</h4>
-                        </div>
-                    </button>
-                    <button onClick={() => navigate(`/create/${note.id}`, { state: note })}>
-                        <div className='menu-option'>
-                            <h4>Edit</h4>
-                        </div>
-                    </button>
-                    <button onClick={handleDelete}>
-                        <div className='menu-option danger'>
-                            <h4>Delete</h4>
-                        </div>
-                    </button>
-                </div>}
-                <UserMenu/>
-            </div>
-        </div>, document.getElementById('root')
+        <SlideDown setOpenState={setOpenState}>
+            {note && <div className='menu-container'>
+                <button onClick={async () => await navigator.share({ text: note.noteContent })}>
+                    <div className='menu-option'>
+                        <h4>Share</h4>
+                    </div>
+                </button>
+                <button onClick={() => navigate(`/create/${note.id}`, { state: note })}>
+                    <div className='menu-option'>
+                        <h4>Edit</h4>
+                    </div>
+                </button>
+                <button onClick={handleDelete}>
+                    <div className='menu-option danger'>
+                        <h4>Delete</h4>
+                    </div>
+                </button>
+            </div>}
+            {/* <UserMenu/> */}
+        </SlideDown>, document.getElementById('root')
     )
 }
 
