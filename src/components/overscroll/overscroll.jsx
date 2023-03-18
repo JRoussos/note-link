@@ -1,11 +1,14 @@
 import React, { useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Overscroll = ({ className="", children }) => {
+import { useStore } from '../../contexts/store'
+
+const Overscroll = ({ className="", children, fallback }) => {
     const overscrollRef = useRef(null)
     const config = { startPoint: 0, pullChange: 0, isDragging: false, limit: 230 }
 
     const navigate = useNavigate()
+    const { state } = useStore()
  
     const handleTouchStart = event => {
         if( window.scrollY !== 0 ) return
@@ -56,10 +59,12 @@ const Overscroll = ({ className="", children }) => {
             window.removeEventListener("touchmove", handleTouchMove)
             window.removeEventListener("touchend", handleTouchEnd)
         }
-    })
+    }, [])
 
     return (
-        <div ref={overscrollRef} className={"overflow-container" + className}>{children}</div>
+        <div ref={overscrollRef} className={"overflow-container" + className}>
+            {state.receivedNotesStatus ? fallback : children }
+        </div>
     )
 }
 

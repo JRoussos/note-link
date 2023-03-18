@@ -10,12 +10,32 @@ import ReactMarkdown from 'react-markdown'
 import VerticalDotMenu, { MenuWindow } from '../../../../components/dotMenu/dotMenu'
 import './card-styles.scss'
 
-export const EmptyCard = ({ }) => {
+export const WelcomeCard = () => {
+    return (
+        <div className='card'>
+            <header className='card-header'>
+                <div className='header-item'>
+                    <p className='header-title-paragraph'><span style={{ paddingRight: '10px', fontSize: '15px', color: 'initial' }}>🎉</span>Hooray! You're Signed Up</p>
+                    <VerticalDotMenu horizontal>
+                        <MenuWindow/>
+                    </VerticalDotMenu>
+                </div>
+            </header>
+            <article className='note-content welcome'>
+                <p>Welcome to NoteLink!</p>
+                <p>Here you can save your notes and share them with all your devices</p>
+                <p>To create a new note pull down from the home screen</p>
+            </article>
+        </div>
+    )
+}
+
+export const EmptyCard = ({ children }) => {
     return (
         <div className='card empty'>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
                 <span style={{ marginTop: '14px' }} className="material-symbols-rounded">add_circle</span>
-                <p>Pull down to add new note</p>
+                <p>{children}</p>
             </div>
         </div>
     )
@@ -40,7 +60,7 @@ export const LoadingCard = () => {
 }
 
 export const LoadingCardMultiple = ({ amount }) => {
-    return new Array(amount).fill('').map( (_, index) => <LoadingCard key={index}/> )
+    return new Array(amount).fill('').map((_, index) => <LoadingCard key={index} />)
 }
 
 const Card = ({ note }) => {
@@ -53,7 +73,7 @@ const Card = ({ note }) => {
         <div className='card'>
             <header className='card-header'>
                 <div className='header-item'>
-                    <p className='header-title-paragraph' style={{ margin: '4px 0 0 0' }}>
+                    <p className='header-title-paragraph'>
                         <span className="material-symbols-rounded" style={{ paddingRight: '10px', fontSize: '20px' }}>event_note</span>
                         <TimeAgo datetime={dateCreated} locale={'en_short'} />
                         <span style={{ padding: '0 5px' }}>∙</span>

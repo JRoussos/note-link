@@ -74,16 +74,14 @@ const StateProvider = ({ children }) => {
         const _ref = collection(db, 'notes')
         const _query = query(_ref, orderBy('dateCreated', 'desc'), where('userID', '==', currentUser.uid))
 
-        // return getDocs(_query)
-        return onSnapshot(_query, querySnapshot => {
+        return onSnapshot(_query, querySnapshot => { 
             const sortedNotes = querySnapshot.docs.map( doc => ({ ...doc.data(), id: doc.id }))
-            
-            sessionStorage.setItem('_receivedSortedNotes', JSON.stringify(sortedNotes))
-                
             const flattenArray = sortedNotes.flatMap( note => note.hashtagArray )
-
+            
             dispatch({ type: 'CHANGE_RECEIVED_SORTED_NOTES', receivedSortedNotes: sortedNotes })
             dispatch({ type: 'CHANGE_HASHTAG_ARRAY', hashtagArray: flattenArray })
+            
+            dispatch({ type: 'CHANGE_RECEIVED_NOTES_STATUS', receivedNotesStatus: querySnapshot.empty })
         })
     }
 

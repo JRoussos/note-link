@@ -8,6 +8,7 @@ import './menu-styles.scss'
 
 export const UserMenu = () => {
     const { logError, logOut } = useStore()
+    const navigate = useNavigate()
 
     const handleLogout = async () => {
         try {
@@ -48,7 +49,7 @@ export const MenuWindow = ({ note, onDelete, setOpenState }) => {
     return createPortal (
         <div className='menu-window open' onClick={() => setOpenState(state => !state)}>
             <div className='drag-container'>
-                <div className='menu-container'>
+                {note && <div className='menu-container'>
                     <button onClick={async () => await navigator.share({ text: note.noteContent })}>
                         <div className='menu-option'>
                             <h4>Share</h4>
@@ -64,7 +65,7 @@ export const MenuWindow = ({ note, onDelete, setOpenState }) => {
                             <h4>Delete</h4>
                         </div>
                     </button>
-                </div>
+                </div>}
                 <UserMenu/>
             </div>
         </div>, document.getElementById('root')

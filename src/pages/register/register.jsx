@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { createUserWithEmailAndPassword, onAuthStateChanged, updateProfile } from 'firebase/auth'
 import { auth } from '../../firebase'
 
-import Toast from '../../components/toast/toast'
+import { useStore } from '../../contexts/store'
 import '../login/login-styles.scss'
 
 const Register = () => {
@@ -13,11 +13,10 @@ const Register = () => {
     const [ username, setUsername ] = useState('')
 
     const [ acceptTerms, setAcceptTerms ] = useState(false)
-
-    const [ errorLog, setErrorLog ] = useState({})
     const [ isLogging, setStatus ] = useState(true)
 
     const navigate = useNavigate()
+    const { logError } = useStore()
 
     const saveToLocalStorage = (key, value) => {
         localStorage.setItem(key, JSON.stringify(value))
@@ -69,7 +68,7 @@ const Register = () => {
             console.warn(error.code, error.message)
             
             setStatus(true)
-            setErrorLog(error)
+            logError(error)
         }
     }
 

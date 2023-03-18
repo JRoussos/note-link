@@ -19,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 <Switch />
             </BrowserRouter>
         </StateProvider>
-    </React.StrictMode>,
+    </React.StrictMode>
 )
 
 if ("serviceWorker" in navigator) {

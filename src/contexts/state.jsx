@@ -9,7 +9,7 @@ const initialState = {
     ],
     error: {},
     tempNote: {},
-    token: false
+    receivedNotesStatus: false
 }
 
 const reducer = (state, action) => {
@@ -22,8 +22,8 @@ const reducer = (state, action) => {
             return { ...state, receivedSortedNotes: action.receivedSortedNotes }
         case 'CHANGE_DISPLAY_DATE': 
             return { ...state, displayDate: action.displayDate }
-        case 'CHANGE_FCM_TOKEN': 
-            return { ...state, token: action.token }
+        case 'CHANGE_RECEIVED_NOTES_STATUS': 
+            return { ...state, receivedNotesStatus: action.receivedNotesStatus }
         case 'CHANGE_TEMP_NOTE':
             return { ...state, tempNote: action.tempNote }
         case 'CHANGE_TOAST_LOG':
