@@ -23,7 +23,7 @@ export const WelcomeCard = () => {
             </header>
             <article className='note-content welcome'>
                 <p>Welcome to NoteLink!</p>
-                <p>Here you can save your notes and share them with all your devices</p>
+                <p>Here you can save your notes and it is automatically synced with all your devices</p>
                 <p>To create a new note pull down from the home screen</p>
             </article>
         </div>

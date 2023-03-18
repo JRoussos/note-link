@@ -4,10 +4,12 @@ import { Link, useNavigate } from 'react-router-dom'
 import LoadingRing from '../../components/loading/loading'
 
 import googleLogo from '../../assets/google-logo.svg'
-import undrawLogin from '../../assets/undraw_design_base64'
+import undrawLogin from '../../assets/n.svg'
+
+import { useStore } from '../../contexts/store'
+import WelcomeBackground from '../../components/welcomeBackground/welcomeBackground'
 
 import './login-styles.scss'
-import { useStore } from '../../contexts/store'
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -76,7 +78,11 @@ const Login = () => {
     return (
         <div className='login'>
             <div className='welcome-message'>
-                <img src={undrawLogin} alt='undrawLogin' style={{ width: '100%', marginTop: '5vh' }} />
+                <WelcomeBackground/>
+                {/* <img src={undrawLogin} alt='undrawLogin' style={{ width: '100px', borderRadius: 0 }} />
+                <p style={{ color: 'rgba(0, 0, 0, 0.7)' }}>NoteLink — Your notes, everywhere</p> */}
+                {/* <img src={undrawLogin} alt='undrawLogin' style={{ width: '100%', marginTop: '5vh' }} /> */}
+                {/* <p>Create an account and start sharing your notes with all your devices.</p> */}
             </div>
             <form onSubmit={handleFormSubmit}>
                 <div className='input-container'>
@@ -91,8 +97,9 @@ const Login = () => {
                         <input type='password' placeholder='Type your secret password' value={password} onChange={event => setPassword(event.target.value)}></input>
                     </div>
                 </div>
-                <button className='btn' style={{ background: '#0782f9', marginTop: '20px' }}>
-                    {isLoading ? <LoadingRing /> : <span style={{ color: '#fff' }}>Log In</span>}
+                {/* #0782f9 */}
+                <button className='btn' style={{ background: '#4494e3', marginTop: '20px' }}>
+                    {isLoading ? <LoadingRing /> : <span style={{ color: '#fff' }}>Login</span>}
                 </button>
             </form>
             <div className='line'>

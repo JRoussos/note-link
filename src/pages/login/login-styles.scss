@@ -11,12 +11,33 @@
 
     .welcome-message {
         text-align: left;
-        margin-bottom: 20px;
+        padding-left: 4px;
+        margin: 5vh 0;
+
+        width: 100%;
+
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+
+        button {
+            background: none;
+            border: none;
+            outline: none;
+
+            margin-right: 15px;
+            padding: 0;
+        }
 
         h1 {
             font-weight: 700;
-            font-size: 26px;
+            font-size: 30px;
             color: rgba(0, 0, 0, 0.8);
+            
+            .logo {
+                font-weight: 900;    
+                font-size: 50px;
+            }
         }
 
         p {
@@ -40,7 +61,7 @@
                 font-weight: 600;
                 padding: 0 4px;
 
-                color: rgba(0, 0, 0, 0.8);
+                color: rgba(0, 0, 0, 0.6);
             }
     
             .input-wrapper {
@@ -48,7 +69,7 @@
                 margin: 5px 0;
     
                 background-color: #fff;
-                border-radius: 10px;
+                border-radius: 8px;
     
                 display: flex;
                 align-items: center;
@@ -57,7 +78,12 @@
                 position: relative;
                 overflow: hidden;
 
-                border: 1px solid #8a8e96;
+                border: 2px solid #e7e7e7;
+                transition: border 0.2s ease-in-out;
+
+                &:has(input:focus) {
+                    border-color: #cfddeb;
+                }
     
                 input {
                     width: 100%;
@@ -119,7 +145,7 @@
         align-items: center;
         justify-content: center;
 
-        border-radius: 10px;
+        border-radius: 8px;
         background-color: #fff;
         border: none;
         
@@ -160,7 +186,7 @@
 
             p {
                 margin: 0;
-                padding: 1px 0 0 30px;
+                padding: 1px 0 0 15px;
 
                 color: rgba(0, 0, 0, 0.6);
                 font-weight: 600;
@@ -171,7 +197,7 @@
                 a {
                     font-weight: 600;
                     color: #0782f9;
-                    color: #405de6;
+                    // color: #405de6;
                     text-decoration: none;
                 }
             }

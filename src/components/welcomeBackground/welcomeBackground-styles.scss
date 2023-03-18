@@ -1,0 +1,11 @@
+.background-welcome-image {
+    position: fixed;
+    z-index: -1;
+    inset: 0;
+
+    background: url('../../assets/many.svg');
+    background-size: 100%;
+    background-repeat: repeat;
+
+    opacity: 0.5;
+}

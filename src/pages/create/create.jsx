@@ -20,7 +20,7 @@ const Create = () => {
 
     const handleBackBtn = () => {
         const updatedNote = { ...location.state, noteContent, noteLength }
-        dispatch({ type: 'CHANGE_TEMP_NOTE', tempNote: updatedNote})
+        dispatch({ type: 'CHANGE_TEMP_NOTE', tempNote: updatedNote })
 
         location.state ? navigate(-1) : navigate('/home')
     }

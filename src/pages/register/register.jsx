@@ -6,6 +6,7 @@ import { auth } from '../../firebase'
 
 import { useStore } from '../../contexts/store'
 import '../login/login-styles.scss'
+import WelcomeBackground from '../../components/welcomeBackground/welcomeBackground'
 
 const Register = () => {
     const [ email, setEmail ] = useState('')
@@ -21,6 +22,8 @@ const Register = () => {
     const saveToLocalStorage = (key, value) => {
         localStorage.setItem(key, JSON.stringify(value))
     }
+
+    const handleBackBtn = () => navigate(-1)
 
     const validateCredentials = () => {
         const validated = {
@@ -84,8 +87,12 @@ const Register = () => {
     return (
         <div className='register'>
             <div className='welcome-message'>
-                <h1>Get Started</h1>
-                <p>Create an account and start sharing your notes with all your devices.</p>
+                <WelcomeBackground/>
+                <button onClick={handleBackBtn}>
+                    <span className="material-symbols-rounded">keyboard_backspace</span>
+                </button>
+                <h1>Sign Up</h1>
+                {/* <p>Create an account and start sharing your notes with all your devices.</p> */}
             </div>
             <form onSubmit={handleFormSubmit}>
                 <div className='input-container'>
@@ -114,12 +121,13 @@ const Register = () => {
                                 <input type='checkbox' id='accept' name='accept terms' checked={acceptTerms} onChange={() => setAcceptTerms(terms => !terms)}/>
                             </div>
                         </label>
-                        <p>I agree to the <Link to={'#'}>Terms & Conditions</Link> and <Link to={'#'}>Privacy Policy</Link></p>                    
+                        {/* & Conditions */}
+                        <p>I've read and agree with the <Link to={'#'}>Terms of Service</Link> and the <Link to={'#'}>Privacy Policy</Link></p>                    
                     </div>
                 </div>
                 <button className='btn' style={{ background: '#0782f9', marginTop: '40px'}}>
                     { isLogging ? 
-                        <span style={{ color: '#fff' }}>Create Account</span> :
+                        <span style={{ color: '#f6f6f6' }}>Create Account</span> :
                         <div className="loading-ring">
                             <div></div>
                             <div></div>
