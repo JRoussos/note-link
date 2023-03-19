@@ -11,7 +11,7 @@ const SlideDown = ({ children, setOpenState }) => {
             dragRef.current.style.transform = `translate3d(0, ${Math.floor(config.pullChange)/ 2.118}px, 0)`
         }
 
-        if (Math.abs(config.pullChange) > 0.05 && Math.abs(config.pullChange) < 370) 
+        if (Math.abs(config.pullChange) > 0.05 && Math.abs(config.pullChange) < 470) 
             requestAnimationFrame(slideHandler)
         else if(Math.abs(config.pullChange) >= 370) 
             setOpenState(false)
@@ -37,14 +37,14 @@ const SlideDown = ({ children, setOpenState }) => {
 
     const handleTouchEnd = () => {
         config.isDragging = false
-        if (config.pullChange > config.limit) config.distance = 460
+        if (config.pullChange > config.limit) config.distance = 560
         else config.distance = 0
         
         slideHandler()
     }
 
     const handleClick = () => {
-        config.distance = 500
+        config.distance = 680
         slideHandler()
     }
 
