@@ -63,7 +63,7 @@ export const LoadingCardMultiple = ({ amount }) => {
     return new Array(amount).fill('').map((_, index) => <LoadingCard key={index} />)
 }
 
-const Card = ({ note }) => {
+const Card = ({ note, className="" }) => {
     const { dateCreated, hashtagArray, noteContent, noteLength, id } = note
 
     const navigate = useNavigate()
@@ -89,7 +89,7 @@ const Card = ({ note }) => {
                     </div>
                 </div>
             </header>
-            <article className='note-content' onClick={() => navigate(`/note/${id}`, { state: note })}>
+            <article className={'note-content' + className} onClick={() => navigate(`/note/${id}`, { state: note })}>
                 {/* <p>{noteContent}</p> */}
                 <ReactMarkdown children={noteContent} />
             </article>

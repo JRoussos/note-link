@@ -18,7 +18,7 @@ const Notes = () => {
             <EmptyCard>Pull down to add new note</EmptyCard>
             <Overscroll fallback={<WelcomeCard/>}>
                 {state.receivedSortedNotes?.length > 0 ? <React.Fragment>
-                    {state.receivedSortedNotes.map( note => <Card key={note.id} note={note}/> )}
+                    {state.receivedSortedNotes.map( note => <Card key={note.id} note={note} className={note.noteLength > 1000 ? ' card-overflow' : ''}/> )}
                     <p className='subtitle'>You've reached the end</p>
                 </React.Fragment> : <LoadingCardMultiple amount={3}/> }
             </Overscroll>

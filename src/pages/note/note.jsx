@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useLocation, useNavigate } from 'react-router-dom'
+
+import { ErrorBoundary } from 'react-error-boundary';
 import QRCode from 'react-qr-code';
 
 import ReactMarkdown from 'react-markdown';
@@ -111,16 +113,18 @@ const Note = () => {
                                 <ChangeLog note={note} currentSelectedLog={currentSelectedLog} updateCurrentSelectedLog={updateCurrentSelectedLog} isAccordionOpen={isAccordionOpen}/>
                             </article>
                         </div>
-                        <div className='card'>
-                            <header className='card-header'>
-                                <div className='header-item'>
-                                    <p className='header-title-paragraph'><span className="material-symbols-rounded" style={{ paddingRight: '10px', fontSize: '20px' }}>qr_code</span>Note in QR Form</p>
-                                </div>
-                            </header>
-                            <article className='note-content' style={{ textAlign: 'center' }} onClick={() => console.log('qr click')}>
-                                <QRCode value={note.noteContent || ""} size={300} level={'M'} style={{ margin: '14px 0' }}/>
-                            </article>
-                        </div>
+                            <div className='card'>
+                                <header className='card-header'>
+                                    <div className='header-item'>
+                                        <p className='header-title-paragraph'><span className="material-symbols-rounded" style={{ paddingRight: '10px', fontSize: '20px' }}>qr_code</span>Note in QR Form</p>
+                                    </div>
+                                </header>
+                                <article className='note-content' style={{ textAlign: 'center' }} onClick={() => console.log('qr click')}>
+                                    <ErrorBoundary fallback={<p>QR Couldn't Load</p>}>
+                                        <QRCode value={note.noteContent} size={1000} level={'M'} style={{ display: 'block', width: '100%', height: '100%' }}/>
+                                    </ErrorBoundary>
+                                </article>
+                            </div>
                     </React.Fragment> : <LoadingCardMultiple amount={2} />
                 }
             </div>
