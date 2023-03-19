@@ -98,7 +98,6 @@ const Note = () => {
                                 <ReactMarkdown children={currentSelectedLog.note.noteContent} 
                                     remarkPlugins={[remarkGfm]} 
                                     rehypePlugins={[rehypeRaw]} 
-                                    // components={{ br: 'b' }}
                                 />
                             </article>
                         </div>

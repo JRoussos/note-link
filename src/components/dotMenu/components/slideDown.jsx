@@ -19,6 +19,8 @@ const SlideDown = ({ children, setOpenState }) => {
     }
 
     const handleTouchStart = event => {
+        event.stopPropagation()
+
         config.isDragging = true    
         
         const { screenY } = event.targetTouches[0]
@@ -35,14 +37,14 @@ const SlideDown = ({ children, setOpenState }) => {
 
     const handleTouchEnd = () => {
         config.isDragging = false
-        if (config.pullChange > config.limit) config.distance = 400
+        if (config.pullChange > config.limit) config.distance = 460
         else config.distance = 0
         
         slideHandler()
     }
 
     const handleClick = () => {
-        config.distance = 600
+        config.distance = 500
         slideHandler()
     }
 

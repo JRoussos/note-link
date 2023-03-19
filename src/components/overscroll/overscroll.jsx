@@ -48,21 +48,9 @@ const Overscroll = ({ className="", children, fallback=null }) => {
         document.body.classList.toggle('no-scroll', config.isDragging)
         overscrollHandler()
     }
-
-    useEffect(() => {
-        window.addEventListener("touchstart", handleTouchStart)
-        window.addEventListener("touchmove", handleTouchMove)
-        window.addEventListener("touchend", handleTouchEnd)
-
-        return () => {
-            window.removeEventListener("touchstart", handleTouchStart)
-            window.removeEventListener("touchmove", handleTouchMove)
-            window.removeEventListener("touchend", handleTouchEnd)
-        }
-    }, [])
-
+    
     return (
-        <div ref={overscrollRef} className={"overflow-container" + className}>
+        <div ref={overscrollRef} className={"overflow-container" + className} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
             {state.receivedNotesStatus ? fallback : children }
         </div>
     )

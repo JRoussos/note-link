@@ -25,7 +25,7 @@ export const UserMenu = () => {
         <div className='menu-container'>
             <button onClick={handleLogout}>
                 <div className='menu-option danger current-user'>
-                    <h4>Log out</h4>
+                    <h4>Logout</h4>
                 </div>
             </button>
         </div>   
@@ -66,7 +66,7 @@ export const MenuWindow = ({ note, onDelete, setOpenState }) => {
                     </div>
                 </button>
             </div>}
-            {/* <UserMenu/> */}
+            <UserMenu/>
         </SlideDown>, document.getElementById('root')
     )
 }
